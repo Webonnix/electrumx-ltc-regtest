@@ -1,0 +1,32 @@
+version: '2'
+services:
+  litecoind:
+    image: beam/litecoind:0.17.0
+    build: "./litecoind"
+    container_name:  litecoind
+    ports:
+      # faucet api
+      - "3002:3000"
+    expose:
+      # rpc api
+      - "18553"
+    volumes:
+      - ./data/litecoind:/home/bitcoin/.bitcoin
+
+  electrumx:
+    image: lukechilds/electrumx
+    build: "./electrumx"
+    depends_on:
+      - "litecoind"
+    ports:
+      - "56002:50002"
+      - "56001:50001"
+    volumes:
+      - ./data/electrumx:/data
+    environment:
+      - DAEMON_URL=http://electrum:electrum@litecoind:18553
+      - COIN=LitecoinSegwit
+      - NET=regtest
+      - ALLOW_ROOT=1
+    links:
+      - "litecoind"
