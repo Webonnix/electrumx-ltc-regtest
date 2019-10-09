@@ -44,10 +44,11 @@ ADD litecoin.conf /home/litecoin/
 ADD startup.sh /home/litecoin/
 ADD faucet.js /home/litecoin/
 
+
 VOLUME ["/home/litecoin/.litecoin"]
 WORKDIR /home/litecoin
 EXPOSE 9332 9333 19332 19333 19444
 
-ENTRYPOINT ["/home/litecoin/startup.sh"]
+ENTRYPOINT ["/home/litecoin/entrypoint.sh"]
 
 CMD ["litecoind"]
