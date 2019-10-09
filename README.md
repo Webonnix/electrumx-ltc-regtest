@@ -1,2 +1,2 @@
 # electrumx-ltc-regtest
-litecoin with electrum 
+litecoin with electrum in docker
