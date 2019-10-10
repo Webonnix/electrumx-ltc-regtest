@@ -8,8 +8,8 @@ services:
       # faucet api
       - "3002:3000"
     expose:
-      # rpc api
-      - "18553"
+      - "19332"
+      - "19333"
     volumes:
       - ./data/litecoind:/home/litecoin/.litecoin
 
@@ -24,7 +24,7 @@ services:
     volumes:
       - ./data/electrumx:/data
     environment:
-      - DAEMON_URL=http://electrum:electrum@litecoind:18553
+      - DAEMON_URL=http://electrum:electrum@litecoind:19332
       - COIN=LitecoinSegwit
       - NET=regtest
       - ALLOW_ROOT=1
