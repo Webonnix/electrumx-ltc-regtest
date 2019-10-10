@@ -11,7 +11,7 @@ services:
       # rpc api
       - "18553"
     volumes:
-      - ./data/litecoind:/home/bitcoin/.bitcoin
+      - ./data/litecoind:/home/litecoin/.litecoin
 
   electrumx:
     image: lukechilds/electrumx
